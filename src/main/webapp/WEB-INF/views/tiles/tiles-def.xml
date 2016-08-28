@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+           "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+           "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <!--Layouts-->
+    <definition name="layout.basic" template="/WEB-INF/views/tiles/layouts/basic.jsp">
+        <put-attribute name="title" value="Spring Web MVC with Tiles 3" />
+        <put-attribute name="header" value="/WEB-INF/views/tiles/view/header.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/view//footer.jsp" />
+    </definition>
+    
+    <definition name="layout.login" template="/WEB-INF/views/tiles/layouts/login.jsp">
+        <put-attribute name="title" value="Login" />
+        <put-attribute name="body" value="" />
+    </definition>
+    
+    <definition name="layout.admin" template="/WEB-INF/views/tiles/layouts/admin-after-login.jsp">
+        <put-attribute name="title" value="Admin" />
+        <put-attribute name="header" value="/WEB-INF/views/tiles/fragments/admin/header.jsp" />
+        <put-attribute name="sidebar" value="/WEB-INF/views/tiles/fragments/admin/sidebar.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/fragments/footer.jsp" />
+    </definition>
+    
+    <definition name="layout.user" template="/WEB-INF/views/tiles/layouts/user-after-login.jsp">
+        <put-attribute name="title" value="User" />
+        <put-attribute name="header" value="/WEB-INF/views/tiles/fragments/user/header.jsp" />
+        <put-attribute name="sidebar" value="/WEB-INF/views/tiles/fragments/user/sidebar.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/fragments/footer.jsp" />
+    </definition>
+    
+    <!--Page Definitions-->
+    <definition name="user.login" extends="layout.login">
+        <put-attribute name="body" value="/WEB-INF/views/tiles/fragments/login.jsp" />
+    </definition>
+    
+    <!--Admin Page Definitions-->
+    <definition name="admin.*" extends="layout.admin">
+        <put-attribute name="body" value="/WEB-INF/views/tiles/fragments/admin/{1}.jsp" />
+    </definition>
+    
+    
+    <!--User Page Definitions-->
+    <definition name="user.*" extends="layout.user">
+        <put-attribute name="body" value="/WEB-INF/views/tiles/fragments/user/{1}.jsp" />
+    </definition>
+    
+</tiles-definitions>
