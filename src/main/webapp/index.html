@@ -3,8 +3,38 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="res/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="res/themes/adminlte/AdminLTE.min.css" />
+        <link rel="stylesheet" type="text/css" href="res/themes/adminlte/_all-skins.min.css" />
+        <script type="text/javascript" src="res/javascript/angular.min.js"></script>
+
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body ng-app="myApp">
+        <div ng-controller="appController">
+            <to-do config="config" list="todo"></to-do>
+            <search-box config="config" list="contacts"></search-box>
+            <search-box config="config" list="contacts1"></search-box>
+
+        </div>
+        <script type="text/javascript" src="res/javascript/com.naga.basic.js"></script>
+        <script type="text/javascript">
+            var app = angular.module('myApp', ['com.naga.basic']);
+            app.controller('appController', function ($scope) {
+                $scope.contacts = [{name: 'Naga', gender: 'M'}, {name: 'Naveena', gender: 'F'}];
+                $scope.contacts1 = [{name: 'Srinivas', gender: 'M'}, {name: 'Naveena', gender: 'F'}];
+                $scope.todo = [{task: 'Check Naga'}, {task: 'Call Ankur'}];
+                $scope.config = {
+                    selectable: true,
+                    header: ['Name', 'Gender'],
+                    keys: ['name', 'gender']
+                };
+                this.root = function () {
+                    console.log("Root");
+                };
+                $scope.addContact = function () {
+                    $scope.contacts.push({name: 'Third Person', gender: 'M'});
+                };
+            });
+        </script>        
     </body>
 </html>
